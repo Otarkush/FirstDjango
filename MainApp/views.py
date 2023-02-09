@@ -13,10 +13,9 @@ def home(request):
 
 def about(request):
     text = f'''
-    Имя: {author['name']}
-    Фамилия: {author['surname']}
-    Email: {author['email']}
+    Имя: <b>{author['name']}</b><br>
+    Фамилия: <b>{author['surname']}</b><br>
+    Email: <b>{author['email']}</b><br>
     '''
     return HttpResponse(text)
-
 
