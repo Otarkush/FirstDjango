@@ -35,11 +35,11 @@ def page_item(request, id):
             Tovar {item['name']}<br>
             '''
             return HttpResponse(text)
-    raise Http404(f"There isn't such item # {id}")\
+    raise Http404(f"There isn't such item # {id}")
 
 def items_list(request):
     text = '<ol>'
     for item in items:
-        text += f"<li>{item['name']}</li>"
+        text += f"<a href='/item/{item['id']}'><li>{item['name']}</li> </a>"
     text += '</ol>'
     return HttpResponse(text)
