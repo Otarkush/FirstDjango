@@ -26,11 +26,11 @@ def about(request):
 def page_item(request, id):
     for item in items:
         if item['id'] == id:
-            text = f'''
-            Tovar {item['name']}<br>
-            Quantity {item['quantity']}<br>
-            '''
-            return HttpResponse(text)
+            context = {
+                'item': item
+
+            }
+            return render(request, 'item_page.html', context)
     raise Http404(f"There isn't such item # {id}")
 
 def items_list(request):
