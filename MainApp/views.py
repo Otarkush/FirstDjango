@@ -15,10 +15,7 @@ items = [
 ]
 # Create your views here.
 def home(request):
-    text = f'''<h1>"Изучаем django"</h1>
-    <strong>Автор</strong>: <i>{author['name']} {author['surname']}</i>
-    '''
-    return HttpResponse(text)
+    return  render(request, 'index.html')
 
 def about(request):
     text = f'''
@@ -33,6 +30,7 @@ def page_item(request, id):
         if item['id'] == id:
             text = f'''
             Tovar {item['name']}<br>
+            Quantity {item['quantity']}<br>
             '''
             return HttpResponse(text)
     raise Http404(f"There isn't such item # {id}")
