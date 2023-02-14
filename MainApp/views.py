@@ -18,12 +18,10 @@ def home(request):
     return  render(request, 'index.html')
 
 def about(request):
-    text = f'''
-    Имя: <b>{author['name']}</b><br>
-    Фамилия: <b>{author['surname']}</b><br>
-    Email: <b>{author['email']}</b><br>
-    '''
-    return HttpResponse(text)
+    context = {
+        'author': author
+    }
+    return render(request, 'about.html', context)
 
 def page_item(request, id):
     for item in items:
@@ -36,8 +34,12 @@ def page_item(request, id):
     raise Http404(f"There isn't such item # {id}")
 
 def items_list(request):
-    text = '<ol>'
-    for item in items:
-        text += f"<a href='/item/{item['id']}'><li>{item['name']}</li> </a>"
-    text += '</ol>'
-    return HttpResponse(text)
+    context = {
+        'items': items
+    }
+    return render(request, 'items_list.html', context)
+    # text = '<ol>'
+    # for item in items:
+    #     text += f"<a href='/item/{item['id']}'><li>{item['name']}</li> </a>"
+    # text += '</ol>'
+    # return HttpResponse(text)
